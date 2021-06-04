@@ -17,4 +17,9 @@ export class BlogService {
     const url = BlogService.blogUrl(environment.apiUrl);
     return this.http.get<Post[]>(url);
   }
+
+  getSingle(id: string): Observable<Post> {
+    const url = BlogService.blogUrl(environment.apiUrl) + '/' + id;
+    return this.http.get<Post>(url);
+  }
 }
