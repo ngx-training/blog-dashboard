@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+        <mat-form-field appearance="outline">
+            <mat-label>E-Mail</mat-label>
+            <input matInput type="text" placeholder="Gibt jetzt deine E-Mail" formControlName="identifier">
+            <mat-hint>Gib deine E-Mail ein</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Placeholder" formControlName="password">
+        </mat-form-field>
+        <button mat-raised-button type="submit" [disabled]="loginForm.invalid">Anmelden</button>
+    </form>
+</div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './helpers/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -7,27 +8,28 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     component: HomeComponent
   },
   {
     path: 'login',
-    pathMatch: 'full',
-    component: LoginComponent,
-
+    component: LoginComponent
   },
   {
     path: 'register',
-    pathMatch: 'full',
     component: RegisterComponent
   },
   {
     path: 'blog',
-    loadChildren: () => import('./blog/blog.module').then(module => module.BlogModule)
+    loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
+  },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: '**',
-    component: HomeComponent
+    redirectTo: ''
   }
 ];
 
