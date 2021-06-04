@@ -9,7 +9,7 @@ import { User } from '../services/user/user.interface';
 export class UserCardComponent implements OnInit {
 
   @Input() user: User | undefined;
-  @Output() myEvent = new EventEmitter();
+  @Output() userChange = new EventEmitter<User>();
 
   constructor() { }
 
@@ -17,7 +17,7 @@ export class UserCardComponent implements OnInit {
   }
 
   changeMyEvent() {
-    this.myEvent.emit('Event von UserCardComponent');
+    // this.myEvent.emit('Event von UserCardComponent');
   }
 
 }

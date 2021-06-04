@@ -1,3 +1,5 @@
 <p>home works!</p>
 
-<app-user-card [user]="user" (myEvent)="getMyEvent($event)"></app-user-card>
+<pre>{{ user | json }}</pre>
+
+<app-user-card [(user)]="user"></app-user-card>
