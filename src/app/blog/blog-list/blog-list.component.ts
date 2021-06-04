@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Post } from 'src/app/services/blog/blog.interface';
 import { BlogService } from 'src/app/services/blog/blog.service';
 
@@ -10,11 +11,13 @@ import { BlogService } from 'src/app/services/blog/blog.service';
 export class BlogListComponent implements OnInit {
 
   posts: Post[] = [];
+  posts$: Observable<Post[]> | undefined;
 
   constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
-    this.loadPosts();
+    //this.loadPosts();
+    this.posts$ = this.blogService.getList();
   }
 
   loadPosts() {

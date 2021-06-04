@@ -1,6 +1,6 @@
 <h2>Blogposts</h2>
-
-<div *ngIf="posts!.length > 0; else noBlogposts">
+<!--<div *ngIf="posts!.length > 0; else noBlogposts">-->
+<div *ngIf="posts$ | async as posts; else noBlogposts">
     <ul>
         <li *ngFor="let post of posts">
             <a [routerLink]="post.id">{{ post.title }}</a>
